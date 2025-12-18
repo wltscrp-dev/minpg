@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welters Corp.</title>
+
+    <!-- Favicon -->
+  <link rel="icon" href="/bluegreenicon.png" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/bluegreenicon.png">
+  <link rel="apple-touch-icon" href="/bluegreenicon.png">
+
+    <!-- Typography: clean + classic tech -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Light, modern background -->
+    <div class="bg" aria-hidden="true">
+      <div class="bg__wash"></div>
+      <div class="bg__grid"></div>
+      <div class="bg__noise"></div>
+      <div class="bg__vignette"></div>
+    </div>
+
+    <div class="frame">
+      <header class="top">
+        <h1 class="brand">Welters Corporation</h1>
+      </header>
+
+      <main class="mid" role="main" aria-label="Coming soon animation">
+        <section class="scene" aria-hidden="true">
+          <!-- Planet + orbit animation -->
+          <div class="cosmos">
+            <!-- The orbit plane is a circle; the moon orbits around it -->
+            <div class="orbit" aria-hidden="true">
+              <div class="moon" aria-hidden="true"></div>
+            </div>
+
+            <!-- Planet with subtle shading and rings -->
+            <div class="planet" aria-hidden="true">
+              <div class="planet__shade"></div>
+              <div class="planet__glow"></div>
+
+              <!-- Subtle surface bands -->
+              <div class="planet__bands" aria-hidden="true">
+                <span class="band b1"></span>
+                <span class="band b2"></span>
+                <span class="band b3"></span>
+              </div>
+
+              <!-- Thin ring (futuristic but simple) -->
+              <div class="ring" aria-hidden="true"></div>
+              <div class="ring ring--back" aria-hidden="true"></div>
+            </div>
+
+            <!-- Tagline (animated) -->
+            <div class="tagline" aria-hidden="false">
+              <span class="tagline__text">Future powered by humans.</span>
+              <span class="tagline__scan" aria-hidden="true"></span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bottom">
+        <p class="footer">
+          A <a class="footer__link" id="vixelLink" href="#" target="_blank" rel="noopener noreferrer">Vixel</a> Company*
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
