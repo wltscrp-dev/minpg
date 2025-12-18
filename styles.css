@@ -1,4 +1,4 @@
-/* styles.css — COMPLETE UPDATED FILE (with more obvious, vibrant planet glow + shimmer) */
+
 
 :root{
   /* lighter, clean base */
@@ -137,15 +137,26 @@ body{
     linear-gradient(180deg, rgba(11,19,38,0.06), rgba(11,19,38,0.02));
   border: 1px solid rgba(11,19,38,0.16);
 
-  /* UPDATED: more vibrant halo presence */
+  /* Vibrant halo presence */
   box-shadow:
     0 40px 90px rgba(42,168,255,0.18),
     0 30px 70px rgba(11,19,38,0.10);
 
   overflow:hidden;
+
+  /* ✅ Mobile-friendly glow: renders outside without boxy clipping */
+  filter:
+    drop-shadow(0 0 18px rgba(42,168,255,0.35))
+    drop-shadow(0 0 42px rgba(67,255,211,0.28))
+    drop-shadow(0 0 70px rgba(122,124,255,0.16));
+
+  /* ✅ Better compositing on mobile (prevents “boxy” edges) */
+  transform: translateZ(0);
+  will-change: transform, filter;
+  isolation: isolate;
 }
 
-/* UPDATED: brighter planet shimmer sweep */
+/* Brighter planet shimmer sweep */
 .planet::after{
   content:"";
   position:absolute;
@@ -173,19 +184,19 @@ body{
   opacity: 0.9;
 }
 
-/* UPDATED: stronger outer glow (more obvious + vibrant) */
+/* Strong outer glow (still kept, but slightly tamed so drop-shadow does the heavy lifting on mobile) */
 .planet__glow{
   position:absolute;
   inset:-35%;
   background:
     radial-gradient(
       circle at 45% 45%,
-      rgba(42,168,255,0.42),
-      rgba(67,255,211,0.28),
+      rgba(42,168,255,0.22),
+      rgba(67,255,211,0.14),
       transparent 62%
     );
   filter: blur(16px);
-  opacity: 1;
+  opacity: 0.7;
   pointer-events:none;
 }
 
@@ -324,6 +335,53 @@ body{
 /* Responsive moon size a bit */
 @media (max-width: 420px){
   .moon{ width: 16px; height: 16px; }
+}
+
+/* ✅ Mobile fix: avoid clip-path artifacts by using masks (prevents “boxy” rings/glow look) */
+@media (max-width: 520px){
+  .ring--back{
+    clip-path: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,0) 50%,
+      rgba(0,0,0,0) 100%
+    );
+            mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,0) 50%,
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  .ring:not(.ring--back){
+    clip-path: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) 50%,
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,1) 100%
+    );
+            mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) 50%,
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,1) 100%
+    );
+  }
+
+  /* Slightly stronger glow on small screens (optional but improves the look) */
+  .planet{
+    filter:
+      drop-shadow(0 0 22px rgba(42,168,255,0.42))
+      drop-shadow(0 0 55px rgba(67,255,211,0.34))
+      drop-shadow(0 0 90px rgba(122,124,255,0.18));
+  }
 }
 
 /* Motion preferences */
