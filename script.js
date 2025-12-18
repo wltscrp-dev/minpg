@@ -50,11 +50,7 @@
       to   { transform: rotate(360deg); }
     }
 
-    @keyframes planetFloat{
-      0%,100% { transform: translateY(0px); }
-      50%     { transform: translateY(6px); }
-    }
-
+   
     @keyframes ringBreath{
       0%,100% { opacity: 0.78; }
       50%     { opacity: 0.92; }
